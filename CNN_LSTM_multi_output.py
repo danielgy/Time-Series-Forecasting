@@ -32,7 +32,6 @@ def data_pre(data):
     :param seq_len: 
     :return: 
     """
-    # sequence_length = sequence_length + 1
     row = round(0.9 * data.shape[0])
     data = data.values
     train = data[:int(row), :]
@@ -66,13 +65,10 @@ def build_model():
                      b_regularizer=None, activity_regularizer=None, W_constraint=None,
                      b_constraint=None, bias=True)))
     model.add(TimeDistributed(Flatten()))
-    print(model.output_shape)
     model.add(TimeDistributed(Dense(1024)))
     model.add(TimeDistributed(Activation('relu')))
-    print(model.output_shape)
     model.add(LSTM(1024, return_sequences=True, activation='relu'))
     model.add(LSTM(1024, return_sequences=True, activation='relu'))
-    print(model.output_shape)
     model.add(TimeDistributed(Dropout(0.25)))
     model.add(TimeDistributed(Activation('relu')))
     model.add(TimeDistributed(Dense(1024)))
@@ -80,7 +76,6 @@ def build_model():
     model.add(GlobalAveragePooling1D(name="global_avg"))
     model.add(Dense(6))
     model.add(Activation('linear'))
-    print(model.output_shape)
     model.summary()
     plot_model(model, to_file='model.png')
     start = time.time()
@@ -104,6 +99,7 @@ def fit_model(X_train, y_train, model, batch_size=128, nb_epoch=10, validation_s
         outfile.write(yaml.dump(yaml_string, default_flow_style=True))
     model.save_weights('cnn_lstm/cnn_lstm.h5')
     return model
+
 
 def predict_point_by_point(data, label):
     # Predict each timestep given the last sequence of true data, in effect only predicting 1 step ahead each time

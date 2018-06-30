@@ -1,10 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2018/4/28 14:25
-# @Author  : Zoe
-# @Site    : 
-# @File    : lstm.py
-# @Software: PyCharm Community Edition
+"""
+Created on Mon Jun 11 19:05:10 2018
+@author: GY
+"""
 import os
 import time
 import warnings
@@ -27,7 +25,6 @@ def data_pre(data):
     :param seq_len: 
     :return: 
     """
-    # sequence_length = sequence_length + 1
     row = round(0.9 * data.shape[0])
     data = data.values
     train = data[:int(row), :]
@@ -59,7 +56,7 @@ def build_model():
                      subsample=(1, 1), dim_ordering='th', W_regularizer=None,
                      b_regularizer=None, activity_regularizer=None, W_constraint=None,
                      b_constraint=None, bias=True))
-    # model.add(AveragePooling2D(pool_size=(1, 2), strides=None, border_mode='valid', dim_ordering='th'))
+   
     model.add(Flatten())
     model.add(Dense(1024))
     model.add(Activation('relu'))
@@ -80,6 +77,7 @@ def fit_model(X_train, y_train, model, batch_size=128, nb_epoch=10, validation_s
         outfile.write(yaml.dump(yaml_string, default_flow_style=True))
     model.save_weights('cnn/cnn.h5')
     return model
+
 
 def predict_point_by_point(data, label):
     # Predict each timestep given the last sequence of true data, in effect only predicting 1 step ahead each time

@@ -63,6 +63,3 @@ if __name__=="__main__":
     X_train, y_train, X_test, y_test = data_pre(df)
     print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
     predict_ts(X_train, y_train, X_test, y_test)
-
-
-

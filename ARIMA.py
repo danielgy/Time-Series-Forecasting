@@ -18,7 +18,6 @@ def data_pre(data):
     :param seq_len: 
     :return: 
     """
-    # sequence_length = sequence_length + 1
     row = round(0.9 * data.shape[0])
     data = data.values
     train = data[:int(row), :]
@@ -34,27 +33,6 @@ print('> Loading data... ')
 df = pd.read_csv('./data/data(1).csv', header=None)
 X_train, y_train, X_test, y_test = data_pre(df)
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
-
-#一阶差分
-# y = pd.DataFrame(y_train)
-# fig = plt.figure(figsize=(12,8))
-# ax1= fig.add_subplot(111)
-# diff1 = y.diff(1)
-# diff1.plot(ax=ax1)
-
-# fig = plt.figure(figsize=(12,8))
-# ax2= fig.add_subplot(111)
-# diff2 = y.diff(2)
-# diff2.plot(ax=ax2)
-
-#q,p
-#y= y.diff(1)
-# fig = plt.figure(figsize=(12,8))
-# ax1=fig.add_subplot(211)
-# fig = sm.graphics.tsa.plot_acf(y,lags=40,ax=ax1)
-# ax2 = fig.add_subplot(212)
-# fig = sm.graphics.tsa.plot_pacf(y,lags=40,ax=ax2)
-
 
 history = [x for x in y_train]
 predictions = list()

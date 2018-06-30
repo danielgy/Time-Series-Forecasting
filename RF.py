@@ -17,7 +17,6 @@ def data_pre(data):
     :param seq_len: 
     :return: 
     """
-    # sequence_length = sequence_length + 1
     row = round(0.9 * data.shape[0])
     data = data.values
     train = data[:int(row), :]

@@ -4,14 +4,11 @@ Created on Thu May 31 18:57:58 2018
 
 @author: GY
 """
-
-
 import time
 import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 import yaml
-
 import CNN_LSTM
 
 
@@ -41,7 +38,6 @@ def plot_results_multiple(predicted_data, true_data, prediction_len):
 
 # Main Run Thread
 if __name__ == '__main__':
-
     epochs = 5
 
     print('> Loading data... ')
@@ -76,4 +72,3 @@ if __name__ == '__main__':
     ax.plot(pre, label='Predict')
     ax.legend()
     plt.show()
-

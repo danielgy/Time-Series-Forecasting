@@ -4,7 +4,6 @@ Created on Mon Jun  4 23:47:14 2018
 
 @author: GY
 """
-
 import time
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -41,15 +40,10 @@ def plot_results_multiple(predicted_data, true_data, prediction_len):
 
 # Main Run Thread
 if __name__ == '__main__':
-
     epochs = 5
 
     print('> Loading data... ')
     df = pd.read_csv('./data/data(1).csv', header=None)
-#    column = list(range(df.shape[1]))
-#    column.remove(16)
-#    column.append(16)
-#    df = df.ix[:, column]
     values = df.values.astype('float32')
 
     X_train, y_train, X_test, y_test = CNN_LSTM_6.data_pre(df)
@@ -73,27 +67,6 @@ if __name__ == '__main__':
         ax.plot(np.absolute(y_test[:, i]-predicted[:, i]),label='MAE')
         ax.legend()
     plt.show()
-
-    #反标准化
-    y = y_test
-    pre = predicted
-    y[:,0] = y[:,0]*229200.5089+90242.52322
-    pre[:,0] = pre[:,0]*229200.5089+90242.52322
-    
-    y[:,1] = y[:,1]*562.6525358+538.5793344
-    pre[:,1] = pre[:,1]*562.6525358+538.5793344
-    
-    y[:,2] = y[:,2]*80.3190505+12.37577399
-    pre[:,2] = pre[:,2]*80.3190505+12.37577399
-    
-    y[:,3] = y[:,3]*63.16655648+4.508900929
-    pre[:,3] = pre[:,3]*63.16655648+4.508900929
-    
-    y[:,4] = y[:,4]*20450.83322+4975.270898
-    pre[:,4] = pre[:,4]*20450.83322+4975.270898
-    
-    y[:,5] = y[:,5]*19357.45488+4278.850619
-    pre[:,5] = pre[:,5]*19357.45488+4278.850619
     
     fig = plt.figure(facecolor='white')
     for i in range(6):
@@ -102,6 +75,3 @@ if __name__ == '__main__':
         ax.plot(pre[:, i], label='Predict')
         ax.legend()
     plt.show()
-    
-
-

@@ -1,10 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2018/4/28 14:26
-# @Author  : Zoe
-# @Site    : 
-# @File    : train_lstm.py
-# @Software: PyCharm Community Edition
+"""
+Created on Thu May 31 18:52:57 2018
+@author: GY
+"""
 
 import time
 import matplotlib.pyplot as plt
@@ -40,7 +38,6 @@ def plot_results_multiple(predicted_data, true_data, prediction_len):
 
 # Main Run Thread
 if __name__ == '__main__':
-
     epochs = 5
     seq_len = 5
 
@@ -84,4 +81,3 @@ if __name__ == '__main__':
         ax.plot(predicted[:, -(i+1)], label='Predict')
         ax.legend()
     plt.show()
-

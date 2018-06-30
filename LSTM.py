@@ -1,10 +1,8 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2018/4/28 14:25
-# @Author  : Zoe
-# @Site    : 
-# @File    : lstm.py
-# @Software: PyCharm Community Edition
+"""
+Created on Mon Jun 11 19:05:10 2018
+@author: GY
+"""
 import os
 import time
 import warnings
@@ -26,7 +24,6 @@ def data_pre(data, sequence_length):
     :param seq_len: 
     :return: 
     """
-    # sequence_length = sequence_length + 1
     result = []
     for index in range(len(data) - sequence_length):
         result.append(data.ix[index: index + sequence_length].values)
@@ -70,6 +67,7 @@ def fit_model(X_train, y_train, model, batch_size=128, nb_epoch=10, validation_s
         outfile.write(yaml.dump(yaml_string, default_flow_style=True))
     model.save_weights('lstm/lstm.h5')
     return model
+
 
 def predict_point_by_point(data):
     # Predict each timestep given the last sequence of true data, in effect only predicting 1 step ahead each time

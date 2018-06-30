@@ -16,7 +16,6 @@ def data_pre(data):
     :param seq_len: 
     :return: 
     """
-    # sequence_length = sequence_length + 1
     row = round(0.9 * data.shape[0])
     data = data.values
     train = data[:int(row), :]
@@ -58,15 +57,12 @@ def predict_ts(X_train, y_train, X_test, y_test):
     plt.legend()
     plt.show()
     
-    
-
-    
-
-print('> Loading data... ')
-df = pd.read_csv('./data/data(1).csv', header=None)
-X_train, y_train, X_test, y_test = data_pre(df)
-print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
-predict_ts(X_train, y_train, X_test, y_test)
+if __name__=="__main__":    
+    print('> Loading data... ')
+    df = pd.read_csv('./data/data(1).csv', header=None)
+    X_train, y_train, X_test, y_test = data_pre(df)
+    print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
+    predict_ts(X_train, y_train, X_test, y_test)
 
 
 
